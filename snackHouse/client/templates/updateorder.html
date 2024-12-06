@@ -1,0 +1,77 @@
+{% extends 'home.html' %}
+{% block title %}Order{% endblock %}
+{% block style %}
+<style>
+  body{
+    background-image: url('https://i.etsystatic.com/33621198/r/il/6b83ae/4482122675/il_fullxfull.4482122675_i8q0.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  h1{
+    color: grey;
+    font-weight: bolder;
+  }
+  h1:hover{
+    text-decoration: underline;
+    color:#f39c12 ;
+    font-style: italic;
+  }
+  label{
+    color: ghostwhite;
+    font-weight: bolder;
+    font-size: 20px;
+  }
+  label:hover{
+    text-decoration: underline;
+    color:#f39c12 ;
+    font-style: italic;
+  }
+</style>
+{% for message in messages %}
+<script>
+alert('{{message}}');
+</script>
+{% endfor %}
+
+{% endblock %}
+{% block content %}
+<div class="container mt-5">
+  <h1 class="mb-4 text-center">Order</h1>
+  
+  <form action="updateorderfood"  method="post">
+    {% for order in updorder %}
+    <div class="mb-3">
+      <label for="fname" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" name="fname" value="{{user.first_name}}" readonly>
+    </div>
+
+    <div class="mb-3">
+      <label for="foodname" class="form-label">Snacks Name</label>
+      <input type="text" class="form-control" name="foodname" id="food" value="{{order.food_name}}" readonly>
+    </div>
+
+    <div class="mb-3">
+      <label for="table" class="form-label">Table</label>
+      <input type="text" class="form-control" name="table" value="{{order.table_name}}" readonly>
+    </div>
+    <div class="mb-3">
+      <label for="members" class="form-label">Members</label>
+      <input type="number" class="form-control" name="members" value={{order.members}} min=1>
+    </div>
+    <div class="mb-3">
+      <label for="quantity" class="form-label">Quantity</label>
+      <input type="number" name="quantity" class="form-control" id="quantity" value={{order.quantity}} min=1>
+    </div>
+    {% endfor %}
+    <div class="mb-3">
+      <!-- <label for="tprice" class="form-label">Total Price</label> -->
+      {% for fprice in prices %}
+      <input type="hidden" class="form-control" name="tprice" id="tprice" value={{fprice.price}}>
+    </div>
+   {% endfor %}
+    <!-- Submit Button -->
+    <button style="margin-left: 45%;" type="submit" class="btn btn-primary ">Update Order</button>
+  </form>
+</div>
+
+{% endblock %}

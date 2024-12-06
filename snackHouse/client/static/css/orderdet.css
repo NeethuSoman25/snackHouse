@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+body {
+  background-image: url('https://i.etsystatic.com/33621198/r/il/6b83ae/4482122675/il_fullxfull.4482122675_i8q0.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.order-details-container {
+  background-color: gainsboro;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.order-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.order-summary, .user-info {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.shipping-info {
+  margin-right: 0;
+}
+
+p {
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+p span {
+  font-weight: bold;
+}
+
+.status {
+  color: white;
+  background-color: #4caf50;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.order-items table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.order-items table, .order-items th, .order-items td {
+  border: 1px solid black;
+}
+
+.order-items th, .order-items td {
+  padding: 10px;
+  text-align: left;
+}
+
+.order-total p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.order-total p strong {
+  font-size: 20px;
+}
+
+.signature-section {
+  margin-top: 50px;
+  text-align: right;
+}
+.signature {
+  font-style: italic;
+  font-size: 18px;
+}
+.signature-line {
+  border-top: 1px solid #000;
+  width: 200px;
+  margin-right: 0;
+}

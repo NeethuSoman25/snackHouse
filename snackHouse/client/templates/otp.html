@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log In</title>
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+  {% for message in messages %}
+<script>
+alert('{{message}}');
+</script>
+{% endfor %}
+</head>
+<body>
+  <div class="login-section">
+    <img style="margin-left: 25%;" src="{% static 'images/minipro_icon.gif' %}" alt="">
+    <form  method="POST" class="login-form">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="mail" value="{{user.username}}" readonly>
+      <label for="otp">OTP</label>
+      <input type="text" id="password" name="otp" maxlength="4" placeholder="AC-xxxx" required>
+      <button id="login" type="submit">Submit</button>
+    </form>  
+  </div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+{% extends 'index.html' %}
+{% block title %}About{% endblock %}
+{% block style %}
+<style>
+  body{
+    background-image: url('https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?cs=srgb&dl=pexels-pixabay-260922.jpg&fm=jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 100%;
+  }
+  h2{
+    color: white;
+    font-weight: bolder;
+  }
+  h2:hover{
+    text-decoration: underline;
+    color:#f39c12 ;
+  }
+  h3{
+    color: white;
+    text-align: center;
+    font-weight: bolder;
+  }
+  h3:hover{
+    text-decoration: underline;
+    color:#f39c12 ;
+  }
+  p{
+    color: green;
+    font-weight: bolder;
+    font-size: 20px;
+    border: 1px solid black;
+    background-color: white;
+  }
+  p:hover{
+    color: red;
+    border: 1px solid black;
+    background-color: aliceblue;
+  }
+  .abli{
+    font-weight: bolder;
+    text-align: center;
+  }
+  .abli:hover{
+    background-color: gray;
+    color: dodgerblue;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div id="about" class="container my-5">
+  <h2 class="text-center mb-4" style="font-family: 'Cormorant Garamond', serif;">About Us</h2>
+  <p class="text-center mb-4" style="font-family: 'Libre Baskerville', serif;">
+    At Al Cafe Arabia, we believe in providing quality products that enhance your taste and express your individuality. Our mission is to deliver exceptional craftsmanship and timeless cusines to our customers.
+  </p>
+  <div class="row my-4">
+    <div class="col-md-6 d-flex flex-column justify-content-center">
+      <h3 style="font-family: 'Cormorant Garamond', serif;">Our Vision</h3>
+      <p class="text-center">
+        We aim to be a leader in the food industry by prioritizing sustainability and authenticity in everything we do. Our vision is to inspire confidence and satisfaction through our products.
+      </p>
+    </div>
+    <div class="col-md-6 d-flex flex-column justify-content-center">
+      <h3 style="font-family: 'Cormorant Garamond', serif;">Our Values</h3>
+      <ul class="list-unstyled">
+        <li class="abli" style="background-color: #e0e0e0; border-radius: 5px; padding: 10px; margin-bottom: 5px;">Quality: We ensure the highest quality in our products.</li>
+        <li class="abli" style="background-color: #e0e0e0; border-radius: 5px; padding: 10px; margin-bottom: 5px;">Integrity: We value honesty and transparency in our business practices.</li>
+        <li class="abli" style="background-color: #e0e0e0; border-radius: 5px; padding: 10px; margin-bottom: 5px;">Innovation: We continuously seek new ways to improve our offerings.</li>
+        <li class="abli" style="background-color: #e0e0e0; border-radius: 5px; padding: 10px; margin-bottom: 5px;">Sustainability: We are committed to eco-friendly practices.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

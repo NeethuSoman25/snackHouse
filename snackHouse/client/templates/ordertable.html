@@ -1,0 +1,125 @@
+{% extends 'home.html' %}
+{% block title %}Orders{% endblock %}
+{% block style %}
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/8.0.0/mdb.min.css"
+  rel="stylesheet"
+/>
+<style>
+  html,
+body,
+.intro {
+  height: 100%;
+}
+
+table td,
+table th {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.card {
+  border-radius: .5rem;
+}
+#heading{
+  height: 100%;
+  background-color: gainsboro;
+  
+}
+h1{
+  margin-top: 300px;
+  color: darkslateblue;
+}
+h1:hover{
+  color: crimson;
+}
+</style>
+{% for message in messages %}
+<script>
+alert('{{message}}');
+</script>
+{% endfor %}
+{% endblock %}
+{% block content %}
+<section class="intro">
+  <div class="bg-image h-100" style="background-image: url('https://i.etsystatic.com/33621198/r/il/6b83ae/4482122675/il_fullxfull.4482122675_i8q0.jpg');">
+    
+    <div class="mask d-flex align-items-center h-100" style="background-color: rgba(25, 185, 234,.25);">
+      <div id="heading"><h1 class="text-center">Your Orders</h1></div>
+     
+      <div class="container">
+        
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="table-responsive">
+                  {% if details == 'none' %}
+                  <p class="text-center " style="font-weight: bolder;color: red;font-size: 30px;">No orders to show,Please order and come back</p>
+                  <div class="d-flex justify-content-center">
+              <a href="{% url 'food' %}"><button type="button" class="btn btn-info btn-lg">Order Food</button></a>
+            </div>
+              {% else %}
+                  <table class="table table-hover mb-0">
+                    <thead>
+                      <tr>
+                        <th scope="col">Item</th>
+                        <th scope="col">Table</th>
+                        <th scope="col">Members</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Total Price</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for detail in details %}
+                      <tr>
+                        <td>{{detail.food_name}}</td>
+                        <td>{{detail.table_name}}</td>
+                        <td>{{detail.members}}</td>
+                        <td>{{detail.quantity}}</td>
+                        <td>{{detail.total_price}}</td>
+                        <td><form action="cancelorder" method="post">
+                          <input type="hidden" value="{{ detail.food_name }}" name="food">
+                          <input type="hidden" value="{{ detail.table_name }}" name="table">
+                          <button type="submit" class="btn btn-danger btn mx-2">Cancel</button>
+                        </form></td>
+                        <td><form action="updateorder" method="post">
+                          <input type="hidden" value="{{ detail.food_name }}" name="food1">
+                          <input type="hidden" value="{{ detail.table_name }}" name="table1">
+                          <button type="submit" class="btn btn-secondary btn mx-2">Update</button>
+                        </form></td>
+                      </tr>
+                     {% endfor %}
+                    </tbody>
+                  </table>
+               
+                </div>
+              </div>
+              <form action="payment" method="post">
+                <input type="hidden" value="{{ user.first_name }}" name="fname">
+                <input type="hidden" value="{{ order }}" name="table">
+                <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-info btn-lg mx-2">Pay</button>
+                </div>
+              </form>
+              {% endif %}
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

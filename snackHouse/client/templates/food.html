@@ -1,0 +1,54 @@
+{% extends 'home.html' %}
+{% block title %}Food{% endblock %}
+{% block style %}
+<style>
+   body{
+  background-color: rgb(185, 176, 176);
+}
+  .card {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+</style>
+{% for message in messages %}
+<script>
+alert('{{message}}')
+</script>
+{% endfor %}
+{% endblock %}
+{% block content %}
+<div class="container py-4 my-4 ">
+  <div class="row">
+    {% for food in foods %}
+    <div class="col-md-3 p-3">
+      <div class="card">
+        <img src="{{food.food_image.url}}" style="height: 150px;
+        object-fit: cover;" class="card-img-top" alt="Card 1">
+        <div class="card-body">
+          <h5 class="card-title text-center" style="font-family: 'Cormorant Garamond', serif;
+          font-size: 1.5rem;
+          text-transform: uppercase;">{{food.food_name}}</h5>
+          <p class="text-center" style="font-weight: bolder;">Rs {{food.price}}</p>
+          <form action="order" method="post">
+            <input type="hidden" name="foodname" value="{{food.food_name}}">
+            <input type="hidden" name="price" value="{{food.price}}">
+            <div class="d-flex justify-content-center"> 
+              <button type="submit" class="btn btn-warning btn mx-2">Buy</button>
+          </div>
+          </form>
+        </div>
+      
+      </div>
+     
+    </div>
+    
+    {% endfor %}
+    </div>
+    
+    </div>
+   
+{% endblock %}

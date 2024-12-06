@@ -1,0 +1,29 @@
+{% extends 'home.html' %}
+{% block title %}Confirm{% endblock %}
+{% block style %}
+<style>
+  body{
+    background-color: azure;
+  }
+</style>
+{% for message in messages %}
+<script>
+alert('{{message}}');
+</script>
+{% endfor %}
+{% endblock %}
+{% block content %}
+<div class="container my-5 py-5">
+        <div class="jumbotron">
+            <h1 class="display-4 text-center bolder" style="font-weight: bolder;">Payment Confirmation</h1>
+            {% for payment in payments %}
+            <p class="lead text-center" style="font-weight: bolder;">Hello {{payment.name}},Your Bill has been created:Rs {{payment.total_amount}}</p>
+            <p class="my-4 text-center" style="font-weight: bolder;font-size: 20px;">Proceed to Payment?</p>
+            {% endfor %}
+            <div class="d-flex justify-content-center"> 
+              <a class="btn btn-danger btn-lg mx-2" href="{% url 'cancelpay' %}" role="button">Cancel</a>
+              <a class="btn btn-success btn-lg mx-2" href="{% url 'orderdetails' %}" role="button">Proceed</a>
+          </div>
+        </div>
+    </div>
+{% endblock %}

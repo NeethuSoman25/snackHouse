@@ -1,0 +1,73 @@
+
+.navbar {
+  background: linear-gradient(135deg, #2d3436, #000);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 0.05rem 1rem;
+  transition: background-color 0.5s ease;
+}
+
+/* Brand styling */
+.navbar .navbar-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: color 0.3s ease;
+}
+
+.navbar .navbar-brand:hover {
+  color: #f39c12;
+}
+
+/* Navbar links */
+.navbar-nav .nav-link {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  transition: color 0.3s ease, padding 0.3s ease;
+}
+
+
+/* Hover effect with underline and padding */
+.navbar-nav .nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #f39c12;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::after {
+  width: 100%;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #f39c12;
+  padding-bottom: 0.8rem;
+}
+
+/* Change background color on scroll */
+.navbar.scrolled {
+  background: rgba(0, 0, 0, 0.95);
+}
+
+/* Navbar Toggler Icon */
+.navbar-toggler {
+  background-color: #f39c12;
+}
+
+/* Add some extra margin to the main content */
+.main-content {
+  margin-top: 100px;
+}
+

@@ -1,0 +1,120 @@
+{% extends 'index.html' %}
+{% block title %}Contact {% endblock %}
+{% block style %}
+<style>
+  .contact-section {
+  padding: 2rem;
+  background-color: #fff;
+  max-width: 800px;
+  margin: 2rem auto;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-section h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.contact-details, .contact-form {
+  flex: 1;
+  margin: 1rem;
+}
+
+.contact-details p {
+  margin-bottom: 0.5rem;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form label {
+  margin: 0.5rem 0 0.2rem;
+}
+
+.contact-form input, .contact-form textarea {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.contact-form textarea {
+  min-height: 150px;
+}
+
+.contact-form button {
+  padding: 0.7rem;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.contact-form button:hover {
+  color: red;
+}
+body{
+    background-image: url('https://i.pinimg.com/originals/3d/a3/7d/3da37dc6421f978a50e165466f221d72.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 100%;
+  }
+  .contact-section{
+    background-color: gainsboro;
+  }
+  #cafe:hover{
+    color:#f39c12
+  }
+  h2{
+    color: dodgerblue;
+    font-weight: bolder;
+  }
+  h2:hover{
+    text-decoration: underline;
+    color:#f39c12 ;
+  }
+</style>
+{% endblock %}
+{% block content %}
+<div class="contact-section">
+  <h2>Contact Us</h2>
+  <p class="text-center">We'd love to hear from you. Please reach out with any questions or feedback.</p>
+
+  <div class="contact-info">
+    <div class="contact-details">
+      <h3 id="cafe"><b><i>Al Arabia Cafe</i></b></h3>
+      <p>123 Arabaab Manzil, Sreekaryam</p>
+      <p>Thiruvananthapuram, Kerala 00001</p>
+      <p><strong>Email:</strong> contact@alarabiacafe.com</p>
+      <p><strong>Phone:</strong> +91 7592899487</p>
+    </div>
+    <div class="contact-form">
+      <h3 class="text-center">Send Us a Message</h3>
+      <form  method="POST">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="username" placeholder="Your email" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Your message" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% for message in messages %}
+<script>
+alert('{{message}}')
+</script>
+{% endfor %}
+{% endblock %}

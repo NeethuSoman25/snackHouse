@@ -1,0 +1,68 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}Order Details{% endblock %} 
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/orderdet.css' %}">
+{% for message in messages %}
+<script>
+alert('{{message}}');
+</script>
+{% endfor %}
+{% endblock %}
+{% block content %}
+    <div class="order-details-container py-5 my-5">
+        <img class="fixed-right" style="margin-top: -20px;height: 40px;width: 40px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy1zwSf8ehdwLfOIf6Knq5uWusNKJ_jh9NPQ&s" height="50" width="50" alt="">
+        <h1 class="text-center" style="text-decoration: underline;position: absolute;margin-left: 20%;margin-top:-50px;">Bill Details</h1>
+        <div class="order-info">
+            <div class="order-summary">
+                <h2>Order Summary</h2>
+                <p>Order Number: <span>#{{rand}}</span></p>
+                <p>Status: <span class="status">Paid</span></p>
+            </div>
+
+            <div class="user-info d-flex">
+                <div class="mx-5">
+                {% for client in clients %}
+                <p>Name: <span>{{client.name}}</span></p>
+                <p>Mobile: <span>{{client.mobile}}</span></p>
+                <p>Email: <span>{{user.username}}</span></p>
+                {% endfor %}
+            </div>
+            </div>
+        </div>
+
+        <div class="order-items">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Table</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                    <tr>
+                        <td>{{order.food_name}}</td>
+                        <td>{{order.table_name}}</td>
+                        <td>{{order.quantity}}</td>
+                        <td>{{order.total_price}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="order-total">
+            <h2>Order Total Price</h2>
+            {% for payment in payments %}
+            <p><strong>Total: <span> Rs {{payment.total_amount}}</span></strong></p>
+            {% endfor %}
+            
+        </div>
+       
+        <div class="d-flex justify-content-center"> 
+            <a class="btn btn-success btn-lg mx-2" href="{% url 'confirmpay' %}" role="button">OK</a>
+        </div>
+    </div>
+{% endblock %}
