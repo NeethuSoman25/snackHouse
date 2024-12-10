@@ -62,8 +62,8 @@ def login_view(request):
       user=authenticate(username=username,password=password)
       if user is not None:
          login(request,user)
-         messages.info(request,'Logged in successfully')
-         return redirect('home')
+         
+         return render(request, 'home.html')
       else:
          message='invalid credentials'
          messages.info(request,message)
@@ -127,12 +127,29 @@ def orderFood(request):
       return HttpResponseRedirect(reverse('food'))
 
 def ordertable(request):
+   
+      tables=Tables.objects.all()
+      name = request.user.first_name
+
+        
+      if Order.objects.filter(name=name).exists():
+         orders = Order.objects.filter(name=name)
+            
+      else:
+         orders = 'none'
+
+        
+      return render(request, 'order.html', {'details': orders,'tables':tables})
+  
+       
+         
+"""
    name=request.user.first_name
    if Order.objects.filter(name=name).exists():
       orders=Order.objects.filter(name=name)
    else:
       orders='none'
-   return render(request,'ordertable.html',{'details':orders})
+   return render(request,'ordertable.html',{'details':orders})"""
 
 def payment(request):
       fname=request.POST['fname']

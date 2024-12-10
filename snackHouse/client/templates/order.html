@@ -27,6 +27,13 @@
     font-style: italic;
   }
 </style>
+<script>
+      
+  function goToOrderFood() {
+      window.location.href = "{% url 'food' %}";
+  }
+
+</script>
 {% for message in messages %}
 <script>
 alert('{{message}}');
@@ -38,17 +45,11 @@ alert('{{message}}');
 <div class="container mt-5">
   <h1 class="mb-4 text-center">Order</h1>
   
-  <form action="orderfood"  method="post">
+  <form method="POST" action="{% url 'ordertable' %}">
+    {% csrf_token %}
 
-    <div class="mb-3">
-      <label for="fname" class="form-label">Name</label>
-      <input type="text" class="form-control" id="name" name="fname" value="{{user.first_name}}" readonly>
-    </div>
+   
 
-    <div class="mb-3">
-      <label for="foodname" class="form-label">Snacks Name</label>
-      <input type="text" class="form-control" name="foodname" id="food" value="{{food}}" readonly>
-    </div>
 
     <div class="mb-3">
       <label for="table" class="form-label">Table</label>
@@ -63,16 +64,14 @@ alert('{{message}}');
       <label for="members" class="form-label">Members</label>
       <input type="number" class="form-control" name="members" value=1 min=1>
     </div>
-    <div class="mb-3">
-      <label for="quantity" class="form-label">Quantity</label>
-      <input type="number" name="quantity" class="form-control" id="quantity" value=1 min=1>
-    </div>
+    
     <div class="mb-3">
       <!-- <label for="tprice" class="form-label">Total Price</label> -->
       <input type="hidden" class="form-control" name="tprice" id="tprice" value={{price}}>
     </div>
     <!-- Submit Button -->
-    <button style="margin-left: 45%;" type="submit" class="btn btn-primary ">Order</button>
+    <button style="margin-left: 45%;" type="submit" class="btn btn-primary" onclick="goToOrderFood()">Order Food Now</button>
+    <button style="margin-left: 65%;" type="submit" class="btn btn-primary "onclick="goToCart()">Order At Place</button>
   </form>
 </div>
 
